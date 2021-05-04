@@ -14,9 +14,12 @@ RSpec.describe "calculadora de cadenas" do
     it "Deberia devolver 6 si la cadena es 1\n2,3" do
         expect(sumar("1\n2,3")).to eq 6
     end
+    it "Deberia devolver 2 si la cadena es 1000,2" do
+        expect(sumar("1001,2")).to eq 2
+    end
 end
 def sumar(cadena_numeros)
     numeros=cadena_numeros.split(/[,\s]/)
-    enteros=numeros.map{|i| i.to_i }.compact
+    enteros=numeros.map{|i| i.to_i if i.to_i<=1000 }.compact
     suma=enteros.sum()
 end
